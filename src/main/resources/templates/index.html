@@ -1,0 +1,58 @@
+<html>
+	<head>
+<!--		<link rel="stylesheet" href="index.css"/>-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			body{
+				color: antiquewhite;
+				background-image: url("https://wallpapercave.com/w/wp5177394.jpg");
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: 100% 100% ;
+				}
+			
+			.header{
+				color: black;
+				text-align: center;
+				border-radius: 25px;
+				background: rgb(192, 192, 192);
+			}
+			
+			#index_button{
+				background-color: rgb(192, 192, 192);
+				box-shadow: 5px;
+				border: none;
+				color: black;
+				padding: 40px 45px;
+				border-radius: 25px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 20px;
+				margin: 10px 10px;
+				cursor: pointer;
+			}
+			
+			.index_table{
+				margin-left: auto;
+				margin-right: auto;
+			}
+			  .input-container {
+			    display: flex;
+			    margin-bottom: 15px;
+			    align-content: center;
+			  }
+		</style>
+	</head>
+	<body>
+		<h1 class="header">Welcome to Coder's Hub</h1>
+			<table class="index_table">
+				<th><a class="fa fa-user-plus" id="index_button" th:href="@{/register}"><br>Register</a></th>
+				<th><a class="fa fa-sign-in" id="index_button" th:href="@{/login}"><br>Login</a></th>
+				<th><a class="fa fa-search" id="index_button" th:href="@{/search}"><br>Search</a></th>
+				<th><a class="fa fa-users" id="index_button" th:href="@{/userslist}"><br>User's List</a></th>
+				<th><a class="fa fa-key" id="index_button" th:href="@{/reset}"><br>Password Reset</a></th>
+				<th><a class="fa fa-info-circle" id="index_button" href="https://www.sathyatech.com/our-courses" ><br>About Us</a></th>
+			</table>
+	</body>
+</html>

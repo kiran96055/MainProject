@@ -1,0 +1,100 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Users</title>
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous">
+<!--		<link rel="stylesheet" href="Siya ke Ram.css">-->
+		<style>
+			table{
+				font-family: Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 90%	;
+          		height: auto;
+				text-align: center;
+			}
+			h1{
+				color: floralwhite;
+				letter-spacing: 1mm;
+			}
+			th{
+				background-color: gainsboro;
+			}
+			/*#a{*/
+			/*	background-color: rgb(0, 0, 0);*/
+			/*	color: rgb(255, 255, 255);*/
+			/*	width: 20%;*/
+			/*	border-radius: 4px;*/
+			/*	margin: 20px;*/
+			/*}*/
+			a{
+				background-color: rgb(0, 0, 0);
+				color: rgb(255, 255, 255);
+				width: 20%;
+				padding: 5px 10px;
+				border-radius: 8px;
+				margin: 20px;
+			}
+			.up{
+				color: antiquewhite;
+				padding: 7px 2px;
+			}
+			tr, th {
+				color: rgb(0, 0, 0);
+				border-radius: 12px;
+			}
+			td{
+				color: antiquewhite;
+			}
+			form{
+				border: none;
+				width: 60%;
+				height: 580px;	
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background: transparent;
+				backdrop-filter: blur(3px);
+			}
+			body{
+				background-image: url('https://thumbs.dreamstime.com/z/user-group-icon-abstract-blue-background-illustration-dark-blue-digital-texture-grunge-elegant-paint-modern-design-concept-user-167073249.jpg');
+				background-position: center;
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<div class="container my-2" align="center">
+				<h1>Users List</h1>
+				<div id="a">
+				<a th:href="@{/register}"> Add User</a>
+				<a th:href="@{/}">Home</a>
+				</div>
+				&nbsp;&nbsp;&nbsp;	
+				<table >
+					<tr>
+						<th>Id</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Action</th>
+					</tr>
+					<tr th:each="user:${users}">
+						<td th:text="${user.id}"></td>
+						<td th:text="${user.firstName}"></td>
+						<td th:text="${user.lastName}"></tdth>
+						<td th:text="${user.email}"></td>
+						<td><a th:href="@{/update/{id}(id=${user.id})}">Update</a>
+							<a th:href="@{/delete/{id}(id=${user.id})}">Delete</a>
+						</td>
+					</tr>
+				</table>	
+			</div>
+		</form>
+	</body>
+</html>

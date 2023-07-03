@@ -1,0 +1,240 @@
+
+<html>
+	<head>
+<!--		<link rel="stylesheet" href="search.css">-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			@import url('https://fonts.googlepis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');  
+			*{
+				margin:0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: 'Poppins', sans-serif;
+			}
+			
+			body{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #23242a;
+			/*	min-height: 100vh;
+				background: url('https://t4.ftcdn.net/jpg/03/22/38/65/360_F_322386576_QDruDTX3Uw0S5gPALUzPMdmWFq8laY8q.jpg');
+				background-size: cover;
+				background-position: center;
+				animation: animateBg 5s linear infinite;*/
+			}
+				
+			.box{
+				position: relative;
+				width: 550px;
+				height: 550px;
+				background: black;
+				border-radius: 8px;
+				overflow: hidden;
+			}
+	/*		@keyframes animateBg{
+				100%{
+					filter: hue-rotate(360deg);
+				}
+			}    */
+			.box::before{
+				content: '';
+				position: absolute;
+				left: -50%;
+				top: -50%;
+				width: 550px;
+				height: 560px;
+				background: linear-gradient(0deg, transparent, transparent, rgb(0, 255, 255), rgb(0, 255, 255), deeppink);
+				z-index: 1;
+				animation: animate 4s linear infinite;
+				transform-origin: bottom right;
+			
+			}
+			@keyframes animate{
+				0%{
+					transform: rotate(0deg);
+				}
+				100%{
+					transform: rotate(360deg);
+				}
+			}
+			
+			
+			.box form{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: absolute;
+				inset: 4px;
+				border-radius: 8px;
+				background: #23242a;
+				z-index: 2;
+				padding: 50px, 40px;
+				display: flex;
+				flex-direction: column;
+			
+			}
+			h3{
+				color: rgb(255, 255, 255);
+				font-weight: 500;
+				text-align: center;
+				letter-spacing: 1mm;
+			}
+			.box form .inputBox{
+				position: relative;
+				width: 400px;
+				margin-top:35px
+			}
+			.box form .inputBox input{
+				position: relative;
+				width: 300px;
+				padding: 20px 10px 7px;
+				background: transparent;
+				border: none;
+				outline: none;
+				color: rgb(0, 0, 0);
+				font-size: 5mm;
+				letter-spacing: 0.05cm;
+				z-index: 10;
+				transition: 1s;
+			}
+			i{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 2px;
+				border-radius: 4px;
+				background-color: rgb(255, 255, 255);
+				overflow: hidden;
+				transition:0.5s;
+				pointer-events: none;
+			}
+			.box form .inputBox input:valid ~ i,
+			.box form .inputBox input:focus ~ i{
+			height: 44px;	
+			}
+			label{
+				color: antiquewhite;
+				font-size: 20px;
+				letter-spacing: 1mm;
+			}
+			
+			h1{
+				color: rgb(255, 255, 255);
+				text-align: center;
+			}			
+			table{
+				font-family: Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				color: aliceblue;
+				width: 400px;
+			}
+			.but1{
+			  border: none;
+			  padding: 10px 20px;
+			  cursor: pointer;
+			  border-radius: 10px;
+			  display: inline-block;
+			  margin: 4px 10px;
+			}
+			.but1:hover{
+				background-color: aqua;
+			}
+			
+			button[type=submit]{
+				width: 400px;
+				background-color: #4CAF50;
+				color: white;
+				padding: 14px 20px;
+				margin: 8px 0;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+			
+			}
+			
+			.home_button{
+				background-color: #4CAF50;
+				border: none;
+				color: white;
+				padding: 10px 10px;
+				border-radius: 10px;
+				text-align: center;
+				text-decoration: none;
+				margin: 5px 0px;
+				display: inline-block;
+				font-size: 15px;
+				cursor: pointer;
+			}
+			
+			.update_button{
+				background-color: #00BFFF;
+				border: none;
+				color: white;
+				padding: 10px 10px;
+				border-radius: 10px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 10px;
+				cursor: pointer;
+			}
+			
+			.delete_button{
+				background-color: #DC143C;
+				border: none;
+				color: white;
+				padding: 10px 10px;
+				border-radius: 10px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 10px;
+				cursor: pointer;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<form action="#" th:action="@{/user_found}" th:object="${user}" method="post">
+				 <h3>Search User</h3>	
+				 <center> <a th:href="@{/}" class="home_button">Home</a> </center>
+				  <div class="inputBox">
+					  <label>Email</label> <br>
+					  <input type="email" th:field="*{email}" placeholder="Enter Email" >
+					  <i></i>
+				  </div><br>
+				  <h1>Or</h1>
+				   <div class="inputBox">
+					  <label>Id</label><br>
+					  <input type="number" th:field="*{id}" placeholder="Enter Id"  >
+					  <i></i>
+				  </div><br>
+				  <div >
+					  <button class="but1" type="submit">Search</button>
+				  </div>
+				  <table border="1px">
+					  <tr>
+						  <th>User Id</th>
+						  <th>First Name</th>
+						  <th>Last Name</th>
+						  <th>Email</th>
+						  <th>Action</th>
+					  </tr>
+					  <tr>
+						 <td th:text="${user.id}"></td>
+						 <td th:text="${user.firstName}"></td>
+						 <td th:text="${user.lastName}"></td>
+						 <td th:text="${user.email}"></td>
+						 <td>&nbsp;&nbsp;&nbsp;
+							 <a class="update_button" th:href="@{/update/{id}(id=${user.id})}">Update</a>
+						 	 <a class="delete_button" th:href="@{/delete/{id}(id=${user.id})}">Delete</a>
+						 </td>
+					  </tr>
+				  </table>
+			</form>
+		</div>
+	</body>
+</html>

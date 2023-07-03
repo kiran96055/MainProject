@@ -1,0 +1,135 @@
+
+<html>
+	<head>
+<!--		<link rel="stylesheet" href="resetPass.css">-->
+		<style>
+			@import url('https://fonts.googlepis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');  
+			 *
+			 {
+				margin: 0;
+				padding: 0; 
+				box-sizing: border-box;
+				font-family: 'Poppins', sans-serif;
+			 }
+			
+			  
+			body{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				background: url('https://www.pixelstalk.net/wp-content/uploads/images1/Computer-security-lock-privacy-images.jpg');
+				background-size: cover;
+				background-position: center;
+			}
+			.box{
+				position: relative;
+				width: 420px;
+				height: 470px;
+				background: transparent;
+				border-radius: 8px;
+				overflow: hidden;
+				border: rgb(192, 192, 192) solid;
+				display: flex;
+				flex-direction: column;
+				backdrop-filter: blur(15px);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: absolute;
+			}
+			
+			
+			
+			.box form h3{
+				color: rgb(0, 0, 0);
+				font-weight: 700;
+				text-align: center;
+				letter-spacing: 0.1cm;
+				font-size: 25px;
+			}
+			.box form .inputBox{
+				position: relative;
+				width: 300px;
+				margin-top: 35px;
+			}
+			
+			.box form .inputBox input{
+				position: relative;
+				width: 200px;
+				padding: 20px 10px 7px;
+				background: transparent;
+				border: none;
+				outline: none;
+				color: rgb(255, 255, 255);
+				font-size: 5mm;
+				letter-spacing: 0.05cm;
+				transition: 0.5s;
+				z-index: 10;
+			}
+			.box form .inputBox i{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 2px;
+				border-radius: 4px;
+				background-color: rgb(0, 0, 0);
+				overflow: hidden;
+				transition: 0.5s;
+				pointer-events: none;
+			}
+			
+			.box form .inputBox input:valid ~ i,
+			.box form .inputBox input:focus ~ i{
+			height: 44px;	
+			}
+			
+			label{
+				color: antiquewhite;
+				font-size: 20px;
+			}
+			
+			button{
+				  background-color: rgb(255, 255, 255); 
+				  border: none;
+				  padding: 10px 20px;
+				  cursor: pointer;
+				  border-radius: 10px;
+				  display: inline-block;
+				  margin: 4px 10px;
+			}
+			
+			button:hover{
+				background-color: aqua;	
+			}
+		</style>
+	</head>
+	<body>
+      <div class="box">
+		  <form action="#" th:action="@{/update_pass}" th:object="${userPass}" method="post">
+			  <h3>Reset Password</h3>
+			  
+			  <div class="inputBox">
+				  <label for="email">Email</label> <br>
+				  <input type="email" th:field="*{email}" placeholder="Enter Email" required = "required" >
+				  <i></i>
+			  </div>
+			   <div class="inputBox">
+				  <label for="password"> New Password</label><br>
+				  <input type="password" th:field="*{password}" placeholder="Enter Password" required = "required" >
+				  <i></i>
+			  </div><br>
+			 <div class="inputBox">
+				  <label for="password">Confirm Password</label><br>
+				  <input type="password" th:field="*{confPassword}" placeholder="Re-enter Password" required >
+				  <i></i>
+			  </div><br>
+			  <div>
+				  <button type="submit">Update</button>
+				  <button onclick="history.back()">Back</button>
+			  </div>
+		  </form>
+	  </div>
+	</body>
+</html>
